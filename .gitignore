@@ -1,0 +1,54 @@
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# OneDrive
+*.tmp
+~$*
+
+# VS Code
+.vscode/
+
+# Claude/Codex local settings
+.claude/
+
+# JetBrains IDEs
+.idea/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Data & documents
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.doc
+*.docx
+*.pdf
+!OE_A&D_NOTA_METODOLOGICA.pdf
+
+# Backup / temp files
+*.bak
+*.swp
+*.swo
+*~
