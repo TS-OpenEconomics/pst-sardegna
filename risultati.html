@@ -608,7 +608,7 @@ p{line-height:1.7;}
       <div class="ic__icon"><i data-lucide="pie-chart"></i></div>
       <div class="ic__lbl">Impatto sociale · valutazione SROI</div>
       <div class="ic__val">2,50</div>
-      <div class="ic__title">Euro di benefici sociali per ogni euro investito</div>
+      <div class="ic__title">Euro di valore sociale per ogni euro investito</div>
       <div class="ic__desc">A fronte di un investimento di 2,43 mln € espresso a prezzi ombra, l'intervento genera 6,08 mln € di benefici sociali monetizzati per visitatori, residenti e sistema turistico locale, con un valore sociale netto residuo di 3,65 mln €. L'effetto è trainato dall'incremento della spesa turistica locale (80,4% dei benefici).</div>
     </div>
   </div>
@@ -1017,7 +1017,7 @@ p{line-height:1.7;}
     <div class="sroi-hero__card">
       <div class="sroi-hero__lbl">Impatto sociale</div>
       <div class="sroi-hero__big">2,50</div>
-      <div class="sroi-hero__desc">Per ogni euro investito nell'Azione 17.01, la collettività riceve <strong style="color:var(--lime);">2,50 euro di benefici sociali</strong> complessivi.</div>
+      <div class="sroi-hero__desc">Per ogni euro investito nell'Azione 17.01, la collettività riceve <strong style="color:var(--lime);">2,50 euro di valore sociale</strong> complessivi.</div>
     </div>
     <div class="sroi-hero__card sroi-hero__card--alt">
       <div class="sroi-hero__lbl">Benefici sociali complessivi</div>
@@ -1043,7 +1043,7 @@ p{line-height:1.7;}
       <div class="sroi-kpi__accent" style="background:var(--blu-500);"></div>
       <div class="sroi-kpi__main">
         <div class="sroi-kpi__title">Benessere psicofisico dei visitatori</div>
-        <div class="sroi-kpi__sub">Miglioramento del benessere percepito dai visitatori dei siti culturali e ambientali, valorizzato attraverso il costo di mercato di interventi analoghi (mindfulness).</div>
+        <div class="sroi-kpi__sub">Il benessere psicofisico è stimato tramite il valore equivalente di un corso di mindfulness come proxy del miglioramento del benessere percepito.</div>
       </div>
       <div class="sroi-kpi__meta">
         <div class="sroi-kpi__pct">18,5%</div>
@@ -1279,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function initSroiCharts(){
     var pieEl = document.getElementById('sroi-pie');
     if(pieEl){
-      var pieLabels = ['Spesa turistica', 'Benessere psicofisico', 'Legacy culturale'];
+      var pieLabels = ['Turismo', 'Benessere psicofisico', 'Legacy culturale'];
       var pieData = [4.89, 1.12, 0.07];
       var pieColors = [COL_LIME, COL_BLU500, COL_BLU900];
       new Chart(pieEl.getContext('2d'), {
