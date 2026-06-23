@@ -1,0 +1,36 @@
+/* ============================================================
+   OpenEconomics — Footer condiviso (brand 2.0)
+   Fonte unica del footer del sito. Va LINKATO dopo il CSS di
+   pagina (styles.css / regionali.css / <style> inline) così
+   queste regole prevalgono sull'eventuale footer preesistente.
+   Usa i token --oe-* (definiti ovunque da ds/oe-tokens.css) per
+   funzionare su tutte le pagine a prescindere dagli alias locali.
+   Markup: .footer > .footer__top [brand-block + office-grid]
+           > .footer__rule > .footer__bottom
+   ============================================================ */
+.footer{background:var(--oe-bluette-900);color:#fff;font-family:var(--oe-font-sans);padding:72px 0 32px;border-top:1px solid rgba(255,255,255,.18);}
+.footer__top{display:grid;grid-template-columns:minmax(260px,1fr) minmax(440px,1.15fr);gap:64px;align-items:start;padding:0 64px;border-bottom:0;}
+.footer__brand-block{display:flex;flex-direction:column;align-items:flex-start;}
+.footer__logo-link{display:inline-block;text-decoration:none;line-height:0;margin-bottom:26px;}
+.footer__logo-img{height:clamp(48px,4vw,64px);width:auto;display:block;opacity:1;mix-blend-mode:screen;}
+.footer__logo-link:hover .footer__logo-img{opacity:1;}
+.footer__tagline{font-family:var(--oe-font-serif);font-weight:400;font-size:clamp(24px,2.2vw,32px);line-height:1.1;color:#fff;max-width:20ch;margin:0;text-wrap:balance;}
+.footer__office-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 40px;}
+.footer__office{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;}
+.footer__office-icon{color:var(--oe-lime-400);width:18px;height:18px;margin-top:3px;}
+.footer__office-icon svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.footer__office address{font-style:normal;font-family:var(--oe-font-sans);font-weight:400;font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.footer__rule{height:1px;background:rgba(255,255,255,.18);margin:48px 64px 24px;}
+.footer__bottom{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding:0 64px;font-family:var(--oe-font-sans);font-size:12px;line-height:1.6;color:rgba(255,255,255,.7);}
+.footer__bottom-left{display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
+.footer__site-link{color:var(--oe-lime-400);font-weight:600;font-size:13px;letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:color .14s ease;}
+.footer__site-link:hover{color:#fff;}
+.footer__copy{color:rgba(255,255,255,.7);}
+.footer__disclaimer{max-width:100%; width:min(100%, 96ch); font-weight:300;}
+@media(max-width:960px){
+  .footer{padding:52px 0 28px;}
+  .footer__top{grid-template-columns:1fr;padding:0 32px;gap:34px;}
+  .footer__office-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .footer__rule{margin:40px 32px 22px;}
+  .footer__bottom{padding:0 32px;flex-direction:column;gap:12px;}
+}

@@ -1,0 +1,175 @@
+/* =========================================================================
+   OpenEconomics — Design Tokens (SOLO token)
+   Source: OpenEconomics Brand Manual Colour (2025) + Figma "OpenEconomics — Website"
+   -------------------------------------------------------------------------
+   NB: questa è la versione "token-only" usata nella fase di adozione
+   graduale (token + chrome). Contiene solo @font-face e :root, così
+   l'import NON altera la tipografia del corpo delle pagine esistenti.
+   Le regole base/ruoli tipografici del DS (.oe-display, h1–h5, p, a, …)
+   vivono nella cartella di riferimento e verranno adottate nella fase
+   di migrazione del corpo.
+   ========================================================================= */
+
+/* -----------------------------------------------------------------------
+   Fonts (self-hosted)
+   ----------------------------------------------------------------------- */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("./fonts/AtkinsonHyperlegibleNext-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("./fonts/AtkinsonHyperlegibleNext-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("./fonts/AtkinsonHyperlegibleMono-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("./fonts/AtkinsonHyperlegibleMono-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Hedvig Letters Serif";
+  src: url("./fonts/HedvigLettersSerif-18pt-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+/* -----------------------------------------------------------------------
+   Color tokens — straight from the Brand Manual
+   ----------------------------------------------------------------------- */
+:root {
+  /* === Primary neutrals === */
+  --oe-white: #FFFFFF;
+  --oe-black: #000000;
+
+  /* === Bluette — the brand's core identity color === */
+  --oe-bluette-050: #EFE5FF;
+  --oe-bluette-100: #D9C1FF;
+  --oe-bluette-200: #B991FF;
+  --oe-bluette-300: #A16AFF;
+  --oe-bluette-400: #8742FF;
+  --oe-bluette-500: #6E1AFF;
+  --oe-bluette-600: #5902EE;
+  --oe-bluette-700: #4400B3;   /* primary brand */
+  --oe-bluette-800: #340088;
+  --oe-bluette-900: #270065;   /* deep purple — footer & dark sections */
+  --oe-bluette: var(--oe-bluette-700);
+
+  /* === Lime — the accent === */
+  --oe-lime-050: #EFFFDC;
+  --oe-lime-100: #DFFFBB;
+  --oe-lime-200: #D5FFA4;
+  --oe-lime-300: #C9FF8C;
+  --oe-lime-400: #B9FF69;       /* signature lime */
+  --oe-lime-500: #91FF15;
+  --oe-lime-600: #7FF100;
+  --oe-lime-700: #67C300;
+  --oe-lime-800: #458300;
+  --oe-lime-900: #315C01;
+  --oe-lime: var(--oe-lime-400);
+
+  /* === Gray scale === */
+  --oe-gray-000: #FFFFFF;
+  --oe-gray-100: #F1F1F1;
+  --oe-gray-200: #E7E7E7;
+  --oe-gray-300: #D2D2D2;
+  --oe-gray-400: #AFAFAF;
+  --oe-gray-500: #999999;
+  --oe-gray-600: #6E6E6E;
+  --oe-gray-700: #545454;
+  --oe-gray-800: #2C2C2C;
+  --oe-gray-900: #000000;
+
+  /* === Secondary palettes (use sparingly — for data viz, illustrations) === */
+  --oe-magenta-400: #FF8DFF;  --oe-magenta-500: #FF4EFF;  --oe-magenta-600: #FF00FF;
+  --oe-magenta-700: #C300C3;  --oe-magenta-800: #920092;  --oe-magenta-900: #600060;
+  --oe-blu-400: #6161FF;      --oe-blu-500: #3A3AFF;      --oe-blu-600: #0000FF;
+  --oe-blu-700: #0000A1;      --oe-blu-800: #000068;      --oe-blu-900: #000035;
+  --oe-yellow-400: #FFF751;   --oe-yellow-500: #FFF300;   --oe-yellow-600: #F4E900;
+  --oe-yellow-700: #595700;   --oe-yellow-800: #403E00;   --oe-yellow-900: #262500;
+  --oe-green-400: #3FFFA5;    --oe-green-500: #00FF88;    --oe-green-600: #00E279;
+  --oe-green-700: #00542D;    --oe-green-800: #003F22;    --oe-green-900: #002D18;
+  --oe-cyan-400: #83FFFF;     --oe-cyan-500: #61FFFF;     --oe-cyan-600: #00FFFF;
+  --oe-cyan-700: #005B5B;     --oe-cyan-800: #004646;     --oe-cyan-900: #003535;
+
+  /* === Semantic tokens === */
+  --oe-bg:          var(--oe-white);
+  --oe-bg-elev:     var(--oe-gray-100);
+  --oe-bg-tint:     var(--oe-bluette-050);     /* soft purple panels */
+  --oe-bg-dark:     var(--oe-bluette-900);     /* footer + dark sections */
+  --oe-bg-accent:   var(--oe-bluette-700);     /* full-bleed CTA blocks */
+  --oe-bg-mid:      #4711BB;                   /* mid purple (homepage) */
+
+  --oe-fg:          var(--oe-black);
+  --oe-fg-soft:     var(--oe-gray-700);        /* body on white */
+  --oe-fg-muted:    var(--oe-gray-500);
+  --oe-fg-inverse:  var(--oe-white);
+
+  --oe-accent:        var(--oe-bluette-700);   /* primary brand accent */
+  --oe-accent-strong: var(--oe-bluette-900);
+  --oe-accent-soft:   var(--oe-bluette-050);
+  --oe-pop:           var(--oe-lime-400);      /* electric lime */
+
+  --oe-stroke:        var(--oe-black);
+  --oe-stroke-soft:   var(--oe-gray-300);
+  --oe-stroke-on-dark:var(--oe-white);
+
+  --oe-link:        var(--oe-bluette-700);
+  --oe-link-hover:  var(--oe-bluette-900);
+
+  /* === Typography === */
+  --oe-font-sans:    "Atkinson Hyperlegible Next", "Atkinson Hyperlegible",
+                     -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --oe-font-mono:    "Atkinson Hyperlegible Mono", ui-monospace,
+                     "SF Mono", Menlo, Consolas, monospace;
+  --oe-font-serif:   "Hedvig Letters Serif", "Source Serif Pro", Georgia, serif;
+
+  /* === Spacing scale (4-pt grid, with 20/40/80 anchors used in the figma) === */
+  --oe-space-1:  4px;
+  --oe-space-2:  8px;
+  --oe-space-3:  12px;
+  --oe-space-4:  16px;
+  --oe-space-5:  20px;
+  --oe-space-6:  24px;
+  --oe-space-7:  32px;
+  --oe-space-8:  40px;
+  --oe-space-9:  52px;
+  --oe-space-10: 64px;
+  --oe-space-11: 80px;
+  --oe-space-12: 120px;
+
+  /* === Layout === */
+  --oe-max-width:     1760px;     /* canvas inner width (1920 - 80 ×2) */
+  --oe-page-pad:      80px;
+  --oe-page-pad-mob:  24px;
+  --oe-col-gap:       40px;
+
+  /* === Radii === sharp-corner system, all 0 */
+  --oe-radius-xs: 0px;
+  --oe-radius-sm: 0px;
+  --oe-radius-md: 0px;
+  --oe-radius-lg: 0px;
+  --oe-radius-pill: 0px;
+
+  /* === Borders === */
+  --oe-border:        1px solid var(--oe-black);
+  --oe-border-soft:   1px solid var(--oe-gray-300);
+  --oe-border-on-dark:1px solid var(--oe-white);
+
+  /* === Shadows (used sparingly — brand is mostly flat) === */
+  --oe-shadow-1: 0 1px 0 rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --oe-shadow-2: 0 4px 12px rgba(39,0,101,0.08);
+  --oe-shadow-3: 0 16px 40px rgba(39,0,101,0.18);
+
+  /* === Motion === */
+  --oe-ease:        cubic-bezier(0.2, 0.7, 0.2, 1);
+  --oe-ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --oe-dur-fast:    140ms;
+  --oe-dur-base:    220ms;
+  --oe-dur-slow:    420ms;
+}

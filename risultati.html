@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Analisi d'impatto socioeconomico dell'Azione 17.01 del PST Monte Acuto-Riviera di Gallura · Provincia Gallura Nord-Est | OpenEconomics</title>
-<link rel="icon" type="image/png" id="favicon" href="icons/OE_site_icon_white.png">
-<script>(function(){var f=document.getElementById('favicon'),mq=window.matchMedia('(prefers-color-scheme: dark)');function u(e){f.href=e.matches?'icons/OE_site_icon_white.png':'icons/OE_site_icon_black.png';}u(mq);mq.addEventListener('change',u);})();</script>
-<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" media="(prefers-color-scheme: light)" href="./icons/OE_site_icon_black.png">
+<link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="./icons/OE_site_icon_white.png">
+<!-- Tipografia self-hosted: vedi ds/oe-tokens.css -->
+<link rel="stylesheet" href="./tokens.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 (function(){
@@ -61,51 +62,24 @@
 </script>
 <style>
 :root {
-  --white:#FFFFFF; --black:#000000;
-  --blu-900:#270065; --blu-800:#340088; --blu-700:#4400B3; --blu-500:#6E1AFF; --blu-400:#ae81fd;
-  --lime:#B9FF69; --grey-light:#F5F5F3; --grey-mid:#DDDDDA; --grey-text:#555555;
-  --fd:'Hedvig Letters Serif', Georgia, 'Times New Roman', serif;
-  --fb:'Atkinson Hyperlegible Next', system-ui, -apple-system, sans-serif;
-  --fm:'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --white:var(--oe-white); --black:var(--oe-black);
+  --blu-900:var(--oe-bluette-900); --blu-800:var(--oe-bluette-800); --blu-700:var(--oe-bluette-700); --blu-500:var(--oe-bluette-500); --blu-400:var(--oe-bluette-300);
+  --lime:var(--oe-lime-400); --grey-light:#F5F5F3; --grey-mid:#DDDDDA; --grey-text:#555555;
+  --fd:var(--oe-font-serif);
+  --fb:var(--oe-font-sans);
+  --fm:var(--oe-font-mono);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--fb);color:var(--black);background:var(--white);font-variant-ligatures:no-common-ligatures;min-width:1080px;}
+body{font-family:var(--fb);font-weight:300;color:var(--black);background:var(--white);font-variant-ligatures:no-common-ligatures;min-width:1080px;}
 section{scroll-margin-top:calc(62px + 44px);}
 h1,h2,h3,h4{font-family:var(--fd);font-weight:400;}
 p{line-height:1.7;}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);height:62px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--grey-mid);transition:transform .28s ease,opacity .28s ease;will-change:transform,opacity;}
-.nav::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--lime);}
-.nav__logo-link{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav__logo-img{height:18px;width:auto;display:block;opacity:1;filter:brightness(0);mix-blend-mode:normal;}
-.nav__badge{font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blu-700);border-left:1px solid var(--grey-mid);padding:0 0 0 12px;line-height:1;flex-shrink:0;}
-.nav__links{display:flex;gap:24px;list-style:none;}
-.nav__links a{font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-text);text-decoration:none;transition:color .2s;cursor:pointer;}
-.nav__links a:hover{color:var(--blu-700);}
-.nav__links a.nav-active{color:var(--blu-700);text-decoration:underline;text-underline-offset:4px;}
-
-/* TOC */
-.toc{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:14px;}
-.toc__dot{width:7px;height:7px;background:var(--grey-mid);cursor:pointer;transition:background .25s,transform .25s;position:relative;border-radius:50%;}
-.toc__dot:hover,.toc__dot.active{background:var(--blu-700);transform:scale(1.5);}
-.toc__dot::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--blu-900);color:var(--white);font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
-.toc__dot:hover::after{opacity:1;}
-
-/* BREADCRUMB */
-#secCrumb{position:fixed;top:62px;left:0;right:0;z-index:98;background:var(--white);border-bottom:1px solid var(--grey-mid);height:44px;display:flex;align-items:center;padding:0 48px;gap:12px;transform:translateY(-100%);transition:transform .3s;pointer-events:none;}
-#secCrumb.visible{transform:translateY(0);}
-#crumbTag{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--blu-700);flex-shrink:0;}
-#crumbTitle{font-size:14px;font-weight:700;color:var(--black);flex:1;transition:opacity .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-#crumbTitle.exiting{opacity:0;}
-#crumbTitle.entering{opacity:0;}
-#crumbNum{font-family:var(--fm);font-size:10px;color:var(--grey-text);letter-spacing:.1em;flex-shrink:0;}
-#crumbFill{position:absolute;bottom:0;left:0;height:2px;background:var(--blu-700);width:0%;transition:width .1s linear;}
+/* Nav, TOC e breadcrumb: ora in ds/nav.css (fonte unica) */
 
 /* HERO */
-.hero{margin-top:62px;background:var(--blu-900);min-height:72vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--lime);z-index:3;}
+.hero{margin-top:62px;background:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.4px) 0 0/22px 22px,var(--blu-900);min-height:72vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
 .hero__l{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:60px 64px 44px;}
 .hero__top{display:flex;flex-direction:column;gap:16px;}
 .hero__bottom{display:flex;flex-direction:column;gap:28px;}
@@ -117,10 +91,10 @@ p{line-height:1.7;}
 .hero__meta{display:flex;gap:28px;flex-wrap:wrap;}
 .hero__mi{display:flex;flex-direction:column;gap:2px;}
 .hero__ml{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);}
-.hero__mv{font-weight:600;font-size:14px;color:var(--grey-light);}
+.hero__mv{font-weight:600;font-size:14px;color:var(--oe-gray-100);}
 .hero__r{position:relative;z-index:2;overflow:hidden;background:var(--blu-800);display:flex;align-items:stretch;justify-content:center;}
 .hero__r::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(39,0,101,.08) 0%,rgba(39,0,101,.36) 55%,rgba(39,0,101,.82) 100%);z-index:1;}
-.hero__placeholder{position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:20px;padding:40px 36px 118px;background:url('icons/hero_sardegna.webp') center center/cover no-repeat;z-index:2;}
+.hero__placeholder{position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:20px;padding:40px 36px 118px;background:url('./icons/hero_sardegna.webp') center center/cover no-repeat;z-index:2;}
 .hero__placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(39,0,101,.08) 0%,rgba(39,0,101,.3) 45%,rgba(39,0,101,.88) 100%);}
 .hero__stat-hero,.hero__stat-label,.hero__map-art,.hero__placeholder>div[style]{position:relative;z-index:1;}
 .hero__stat-hero{font-family:var(--fd);font-size:clamp(52px,6vw,92px);color:var(--white);line-height:.92;letter-spacing:-.03em;}
@@ -130,28 +104,32 @@ p{line-height:1.7;}
 .hero__cap strong{color:var(--lime);}
 
 /* SECTIONS */
-.s-dark{background:var(--blu-900);padding:72px 64px;}
-.s-light{background:var(--white);padding:72px 64px;}
-.s-grey{background:var(--grey-light);padding:72px 64px;}
-.border-lime{border-top:4px solid var(--lime);}
+.s-dark{background:var(--blu-900);padding:96px 64px;}
+.s-light{background:var(--white);padding:96px 64px;}
+.s-grey{background:var(--oe-gray-100);padding:96px 64px;}
+.border-lime{border-top:1px solid var(--oe-gray-200);}
 
 /* SECTION HEADERS */
-.sh{display:flex;align-items:center;gap:16px;margin-bottom:48px;}
-.sh__bar{width:4px;height:40px;background:var(--lime);flex-shrink:0;}
-.sh__tag{font-family:var(--fm);font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--blu-700);margin-bottom:4px;}
-.sh__title{font-family:var(--fd);font-weight:400;font-size:29px;color:var(--black);}
-.s-dark .sh__tag{color:var(--lime);}
+.sh{display:flex;flex-direction:column;align-items:flex-start;gap:0;margin-bottom:48px;}
+.sh__bar{display:none;}
+.sh__tag{display:inline-flex;align-self:flex-start;background:var(--lime);color:var(--blu-700);font-family:var(--fm);font-weight:500;font-size:14px;letter-spacing:-.01em;text-transform:uppercase;padding:6px 14px;margin-bottom:16px;}
+.sh__title{font-family:var(--fd);font-weight:400;font-size:clamp(28px,2.8vw,42px);line-height:1.06;color:var(--black);}
+.s-dark .sh__tag{color:var(--blu-700);background:var(--lime);}
 .s-dark .sh__title{color:var(--white);}
-.section-title{display:flex;align-items:center;gap:18px;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--grey-mid);}
-.section-title__num{font-family:var(--fm);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blu-700);white-space:nowrap;}
-.section-title__text{font-family:var(--fd);font-size:46px;line-height:1.04;font-weight:400;color:var(--black);}
-.s-dark .section-title{border-bottom-color:rgba(255,255,255,.2);}
-.s-dark .section-title__num{color:var(--lime);}
+.section-title{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px;}
+.section-title__num{display:inline-flex;align-self:flex-start;background:var(--lime);color:var(--blu-700);font-family:var(--fm);font-weight:500;font-size:14px;letter-spacing:-.01em;text-transform:uppercase;padding:6px 14px;white-space:nowrap;}
+.section-title__text{font-family:var(--fd);font-size:clamp(34px,3.5vw,50px);line-height:1.04;font-weight:400;color:var(--black);}
+.s-dark .section-title__num{color:var(--blu-700);background:var(--lime);}
 .s-dark .section-title__text{color:var(--white);}
 .section-subtitle{display:flex;align-items:center;gap:14px;font-family:var(--fd);font-size:24px;font-weight:400;line-height:1.25;letter-spacing:0;color:var(--black);max-width:none;width:100%;margin:-6px 0 40px;}
 .section-subtitle span{display:block;}
 .section-subtitle::before{content:'';width:4px;height:34px;background:var(--lime);flex:0 0 auto;}
 .s-dark .section-subtitle{color:var(--lime);}
+/* Ultima sezione (Metodologia) chiara: non deve confinare col footer viola */
+#metodologia.s-dark{background:var(--oe-gray-100);color:var(--black);}
+#metodologia .section-title__num{color:var(--blu-700);}
+#metodologia .section-title__text{color:var(--black);}
+#metodologia .section-subtitle{color:var(--black);}
 .stitle{font-family:var(--fd);font-weight:400;font-size:22px;color:var(--black);margin:48px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--grey-mid);}
 .tx ul{font-family:var(--fb);font-size:15px;line-height:1.7;color:var(--grey-text);margin:8px 0 18px 22px;}
 .tx li{padding-left:4px;margin:4px 0;}
@@ -159,7 +137,7 @@ p{line-height:1.7;}
 /* MACRO CARDS */
 .mgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;}
 .mgrid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-.mc{background:var(--grey-light);padding:32px 20px;display:grid;grid-template-rows:48px 6.8em auto auto 4.8em 1fr;row-gap:8px;cursor:default;transition:background .2s;position:relative;overflow:hidden;}
+.mc{background:var(--white);border:1px solid var(--oe-gray-200);padding:32px 20px;display:grid;grid-template-rows:48px 6.8em auto auto 4.8em 1fr;row-gap:8px;cursor:default;transition:background .2s,border-color .2s;position:relative;overflow:hidden;}
 .mc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blu-700);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
 .mc:hover{background:var(--blu-900);}
 .mc:hover::after{transform:scaleX(1);}
@@ -205,38 +183,28 @@ p{line-height:1.7;}
 .sp48{height:48px;}
 
 /* INFO CARDS */
-.ic{background:var(--grey-light);padding:28px 22px;display:flex;flex-direction:column;gap:10px;transition:background .2s,transform .2s,box-shadow .2s,border-color .2s;cursor:default;border:1px solid var(--grey-mid);}
-.ic:hover{background:var(--black);border-color:var(--black);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.25);}
+.ic{background:var(--white);padding:28px 22px;display:flex;flex-direction:column;gap:10px;transition:background .2s,transform .2s,box-shadow .2s,border-color .2s;cursor:default;border:1px solid var(--blu-700);}
+.ic:hover{background:var(--oe-bluette-050);border-color:var(--blu-700);transform:translateY(-4px);box-shadow:0 4px 12px rgba(39,0,101,.08);}
 .ic__icon i,.ic__icon svg{width:34px;height:34px;stroke:var(--blu-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;transition:stroke .2s;}
-.ic:hover .ic__icon i,.ic:hover .ic__icon svg{stroke:var(--lime);}
 .ic__lbl{font-family:var(--fm);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blu-700);transition:color .2s;}
-.ic:hover .ic__lbl{color:var(--white);}
 .ic__val{font-family:var(--fd);font-weight:400;font-size:29px;color:var(--black);line-height:1;transition:color .2s;}
-.ic:hover .ic__val{color:var(--lime);}
 .ic__title{font-weight:600;font-size:14px;color:var(--black);transition:color .2s;}
-.ic:hover .ic__title{color:var(--white);}
 .ic__desc{font-size:13px;color:var(--grey-text);line-height:1.55;transition:color .2s;}
-.ic:hover .ic__desc{color:var(--white);}
 
 /* MOLTIPLICATORI */
 .mult-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px;}
-.mult-card{background:var(--grey-light);padding:40px 32px 36px;display:flex;flex-direction:column;gap:8px;position:relative;transition:background .2s,transform .2s,box-shadow .2s;cursor:default;}
-.mult-card:hover{background:var(--black);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.25);}
-.mult-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--lime);}
+.mult-card{background:var(--oe-gray-100);padding:40px 32px 36px;display:flex;flex-direction:column;gap:8px;position:relative;transition:background .2s,transform .2s,box-shadow .2s;cursor:default;}
+.mult-card:hover{background:var(--oe-bluette-050);transform:translateY(-4px);box-shadow:0 4px 12px rgba(39,0,101,.08);}
+.mult-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--blu-700);}
 .mult-card__icon svg{width:26px;height:26px;stroke:var(--blu-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px;transition:stroke .2s;}
-.mult-card:hover .mult-card__icon svg{stroke:var(--lime);}
 .mult-card__lbl{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blu-700);transition:color .2s;}
-.mult-card:hover .mult-card__lbl{color:var(--white);}
 .mult-card__val{font-family:var(--fd);font-size:54px;line-height:1;color:var(--black);font-weight:400;transition:color .2s;}
-.mult-card:hover .mult-card__val{color:var(--lime);}
 .mult-card__unit{font-family:var(--fm);font-size:12px;color:var(--grey-text);letter-spacing:.04em;transition:color .2s;}
-.mult-card:hover .mult-card__unit{color:var(--white);}
 .mult-card__desc{font-size:13px;color:var(--grey-text);line-height:1.65;margin-top:4px;transition:color .2s;}
-.mult-card:hover .mult-card__desc{color:var(--white);}
 
 /* COMPONENTI */
 .componenti-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:48px;}
-.componente{background:var(--grey-light);padding:36px 28px 32px;display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:background .2s;position:relative;}
+.componente{background:var(--oe-gray-100);padding:36px 28px 32px;display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:background .2s;position:relative;}
 .componente:hover{background:var(--grey-mid);}
 .componente__header{display:flex;align-items:flex-end;gap:12px;}
 .componente__num{font-family:var(--fd);font-size:52px;line-height:1;font-weight:400;flex-shrink:0;}
@@ -247,7 +215,7 @@ p{line-height:1.7;}
 .componente__accent{height:3px;width:32px;transition:width .35s ease;}
 .componente:hover .componente__accent{width:100%;}
 .componente__desc{font-size:14px;color:var(--grey-text);line-height:1.75;overflow:hidden;max-height:64px;position:relative;transition:max-height .4s ease;}
-.componente__desc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28px;background:linear-gradient(to bottom, transparent, var(--grey-light));pointer-events:none;transition:opacity .25s;}
+.componente__desc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28px;background:linear-gradient(to bottom, transparent, var(--oe-gray-100));pointer-events:none;transition:opacity .25s;}
 .componente:hover .componente__desc::after{background:linear-gradient(to bottom, transparent, var(--grey-mid));}
 .componente.is-open .componente__desc{max-height:1200px;}
 .componente.is-open .componente__desc::after{opacity:0;}
@@ -258,7 +226,7 @@ p{line-height:1.7;}
 
 /* STAT ROW */
 .stat-row{display:flex;gap:2px;margin-bottom:48px;}
-.stat-item{background:var(--grey-light);padding:24px 28px;flex:1;border-top:3px solid var(--grey-mid);transition:border-color .2s;}
+.stat-item{background:var(--oe-gray-100);padding:24px 28px;flex:1;border-top:3px solid var(--grey-mid);transition:border-color .2s;}
 .stat-item:hover{border-color:var(--blu-700);}
 .stat-item__lbl{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-text);margin-bottom:6px;}
 .stat-item__val{font-family:var(--fd);font-size:26px;color:var(--blu-700);line-height:1;font-weight:400;}
@@ -271,7 +239,7 @@ p{line-height:1.7;}
 .cb__title{font-weight:600;font-size:16px;color:var(--black);line-height:1.3;}
 .cb__desc{font-size:14px;color:var(--grey-text);line-height:1.6;}
 .cb__fonte{font-size:12px;color:var(--grey-text);font-style:italic;}
-.fl{background:var(--grey-light);border:2px solid var(--grey-mid);padding:48px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:300px;text-align:center;transition:border-color .2s;}
+.fl{background:var(--oe-gray-100);border:2px solid var(--grey-mid);padding:48px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:300px;text-align:center;transition:border-color .2s;}
 .fl:hover{border-color:var(--blu-700);}
 .fl-icon{width:36px;height:36px;stroke:var(--grey-mid);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;}
 .fl__tag{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-text);margin-top:8px;}
@@ -313,11 +281,11 @@ p{line-height:1.7;}
 .interventi__head__big{font-family:var(--fd);font-size:34px;color:var(--lime);line-height:1;letter-spacing:-.01em;}
 .interventi__head__lbl{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);}
 .interventi__group{background:var(--white);padding:0;}
-.interventi__sub{background:var(--grey-light);padding:12px 28px 10px;border-bottom:1px solid var(--grey-mid);display:flex;justify-content:space-between;align-items:baseline;gap:18px;}
+.interventi__sub{background:var(--oe-gray-100);padding:12px 28px 10px;border-bottom:1px solid var(--grey-mid);display:flex;justify-content:space-between;align-items:baseline;gap:18px;}
 .interventi__sub__lbl{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blu-700);font-weight:700;}
 .interventi__sub__amt{font-family:var(--fm);font-size:12px;color:var(--grey-text);}
 .interventi__row{padding:18px 28px;display:grid;grid-template-columns:1fr 130px 110px;gap:18px;align-items:center;border-bottom:1px solid var(--grey-mid);transition:background .2s;}
-.interventi__row:hover{background:var(--grey-light);}
+.interventi__row:hover{background:var(--oe-gray-100);}
 .interventi__row:last-child{border-bottom:none;}
 .interventi__row__name{font-size:14px;color:var(--black);line-height:1.4;font-weight:500;}
 .interventi__row__name span{display:block;font-family:var(--fm);font-size:10.5px;color:var(--grey-text);letter-spacing:.06em;text-transform:uppercase;font-weight:400;margin-top:3px;}
@@ -338,7 +306,7 @@ p{line-height:1.7;}
 .rspesa__list{display:flex;flex-direction:column;}
 .rspesa__row{padding:18px 24px;border-bottom:1px solid var(--grey-mid);display:grid;grid-template-columns:60px 1fr 80px;align-items:center;gap:14px;transition:background .2s;flex:1;min-height:54px;}
 .rspesa__row:last-child{border-bottom:none;}
-.rspesa__row:hover{background:var(--grey-light);}
+.rspesa__row:hover{background:var(--oe-gray-100);}
 .rspesa__row__pct{font-family:var(--fd);font-size:22px;color:var(--blu-700);font-weight:500;line-height:1;}
 .rspesa__row__name{font-family:var(--fb);font-size:14px;color:var(--black);font-weight:500;line-height:1.3;}
 .rspesa__row__amt{font-family:var(--fm);font-size:11px;color:var(--grey-text);text-align:right;}
@@ -346,7 +314,7 @@ p{line-height:1.7;}
 
 /* IMPATTO SOCIALE SECTION */
 .sroi-method{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:48px;}
-.sroi-step{background:var(--grey-light);padding:24px 22px;display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--blu-700);transition:background .2s,border-color .2s;}
+.sroi-step{background:var(--oe-gray-100);padding:24px 22px;display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--blu-700);transition:background .2s,border-color .2s;}
 .sroi-step:hover{background:var(--blu-900);border-top-color:var(--lime);}
 .sroi-step:hover .sroi-step__n,.sroi-step:hover .sroi-step__title{color:var(--lime);}
 .sroi-step:hover .sroi-step__desc{color:var(--grey-mid);}
@@ -383,22 +351,7 @@ p{line-height:1.7;}
 .sroi-chart-canvas{position:relative;width:100%;height:300px;}
 @media(max-width:900px){.sroi-charts{grid-template-columns:1fr;}}
 
-/* FOOTER */
-.footer{background:var(--black);font-family:var(--fb);}
-.footer__top{display:grid;grid-template-columns:1fr 1.35fr;gap:72px;padding:56px 64px 48px;border-bottom:1px solid rgba(255,255,255,.12);}
-.footer__brand-line{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
-.footer__logo-link{display:inline-block;text-decoration:none;}
-.footer__logo-img{height:20px;width:auto;display:block;opacity:.9;mix-blend-mode:screen;transition:opacity .2s;}
-.footer__logo-link:hover .footer__logo-img{opacity:1;}
-.footer__badge{font-family:"JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);border-left:1px solid rgba(255,255,255,.18);padding:0 0 0 12px;line-height:1;flex-shrink:0;}
-.footer__tagline{font-size:14px;color:#888;line-height:1.8;max-width:38ch;}
-.footer__right{padding-top:10px;justify-self:start;text-align:left;width:100%;max-width:none;}
-.footer__condizioni-label{font-family:"JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#666;margin-bottom:16px;}
-.footer__condizioni-text{font-size:13px;color:#777;line-height:1.84;max-width:none;width:100%;}
-.footer__bottom{display:flex;align-items:center;justify-content:space-between;padding:20px 64px;gap:16px;}
-.footer__bottom-left{font-family:"JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);text-decoration:none;}
-.footer__bottom-right{font-family:"JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#555;text-align:left;}
-
+/* Footer: ora in ds/footer.css (fonte unica) */
 /* RESPONSIVE */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;min-height:auto;}
@@ -417,13 +370,16 @@ p{line-height:1.7;}
   .footer__bottom{padding:16px 32px;flex-direction:column;gap:8px;align-items:flex-start;}
 }
 </style>
+<link rel="stylesheet" href="./ds/nav.css">
+<link rel="stylesheet" href="./ds/footer.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://www.openeconomics.eu" class="nav__logo-link" aria-label="OpenEconomics" target="_blank" rel="noopener noreferrer">
-    <img src="icons/OpenEconomics-LOGO-WHITE.png" alt="OpenEconomics" class="nav__logo-img">
+  <a href="https://www.openeconomics.eu/" class="nav__logo-link" aria-label="OpenEconomics Studies">
+    <img src="./icons/OpenEconomics-LOGO-WHITE.png" alt="OpenEconomics" class="nav__logo-img">
+    <span class="nav__badge">Studies</span>
   </a>
   <ul class="nav__links">
     <li><a onclick="navTo('hero')">Home</a></li>
@@ -658,14 +614,14 @@ p{line-height:1.7;}
 
   <div class="mgrid">
     <div class="mc">
-      <div class="mcw"><img src="icons/png_spesa.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/png_spesa.png" alt="" class="mc-png-icon"></div>
       <div class="mcl">Spesa totale in Sardegna</div>
       <div class="mcv">2,69</div>
       <div class="mcu">milioni €</div>
       <div class="mcd">L'impulso iniziale dell'Azione 17.01 nella Provincia Gallura Nord-Est: lavori di valorizzazione, servizi turistici, attività culturali, consulenze e prestazioni informatiche da cui parte la catena di effetti analizzata.</div>
     </div>
     <div class="mc">
-      <div class="mcw"><img src="icons/PIL.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/PIL.png" alt="" class="mc-png-icon"></div>
       <div class="mcl">PIL generato in Sardegna</div>
       <div class="mcv">3,56</div>
       <div class="mcu">milioni €</div>
@@ -673,7 +629,7 @@ p{line-height:1.7;}
       <div class="mcd">Per ogni euro speso, l'economia regionale restituisce 1,32 euro di valore aggiunto. Un moltiplicatore intra-regionale sostenuto dalla composizione settoriale dell'intervento, in cui prevalgono attività ad alta intensità di lavoro locale.</div>
     </div>
     <div class="mc">
-      <div class="mcw"><img src="icons/Produzione.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/Produzione.png" alt="" class="mc-png-icon"></div>
       <div class="mcl">Valore della produzione attivato in Sardegna</div>
       <div class="mcv">5,97</div>
       <div class="mcu">milioni €</div>
@@ -681,7 +637,7 @@ p{line-height:1.7;}
       <div class="mcd">Oltre il doppio dell'importo speso: il volume d'affari generato lungo l'intera filiera dei fornitori operanti in Sardegna, dai cantieri edili ai produttori di servizi turistici, dai fornitori di tecnologia alle attività culturali.</div>
     </div>
     <div class="mc">
-      <div class="mcw"><img src="icons/Occupazione.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/Occupazione.png" alt="" class="mc-png-icon"></div>
       <div class="mcl">Occupazione attivata in Sardegna</div>
       <div class="mcv">47,1</div>
       <div class="mcu">unità lavorative (ETP)</div>
@@ -689,7 +645,7 @@ p{line-height:1.7;}
       <div class="mcd">Oltre 47 posti di lavoro a tempo pieno in Sardegna: 17,5 ETP per ogni milione di euro speso. Gli ETP sono calcolati ipotizzando 1 anno di realizzazione per ciascun progetto.</div>
     </div>
     <div class="mc">
-      <div class="mcw"><img src="icons/Redditi.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/Redditi.png" alt="" class="mc-png-icon"></div>
       <div class="mcl">Redditi generati in Sardegna</div>
       <div class="mcv">3,49</div>
       <div class="mcu">milioni €</div>
@@ -697,7 +653,7 @@ p{line-height:1.7;}
       <div class="mcd">Stipendi e remunerazioni del capitale distribuiti lungo la catena di filiera regionale (redditi da lavoro 1,55 mln € · redditi da capitale 1,94 mln €). Per ogni euro speso, 1,30 euro tornano alle famiglie e alle imprese sarde sotto forma di reddito.</div>
     </div>
     <div class="mc mc--fiscal">
-      <div class="mcw"><img src="icons/Gettito Fiscale.png" alt="" class="mc-png-icon"></div>
+      <div class="mcw"><img src="./icons/Gettito Fiscale.png" alt="" class="mc-png-icon"></div>
       <div class="mcl"><span>Gettito fiscale</span><span>complessivo</span></div>
       <div class="mcv">1,12</div>
       <div class="mcu">milioni €</div>
@@ -728,7 +684,7 @@ p{line-height:1.7;}
       <div class="mult-card__lbl">Intensità Occupazionale</div>
       <div class="mult-card__val">17,50</div>
       <div class="mult-card__unit">ETP attivati in Sardegna per milione di euro di spesa</div>
-      <div class="mult-card__desc">Oltre 17 unità di lavoro a tempo pieno generate in Sardegna per ogni milione di euro di spesa, assumendo 1 anno di realizzazione per ciascun progetto: un'intensità coerente con il peso delle costruzioni e dei servizi turistici.</div>
+      <div class="mult-card__desc">Oltre 17 ETP (equivalenti a tempo pieno) generati in Sardegna per ogni milione di euro di spesa, assumendo 1 anno di realizzazione per ciascun progetto: un'intensità coerente con il peso delle costruzioni e dei servizi turistici.</div>
     </div>
   </div>
 
@@ -886,7 +842,7 @@ p{line-height:1.7;}
 
   <div class="hlb" style="margin-bottom:48px;">
     <div class="hlb__bar"></div>
-    <div class="hlb__tx"><strong>La struttura settoriale degli impatti riflette la natura locale dell'intervento.</strong> Dei 4,24 mln € di PIL complessivamente attivati, <strong>3,56 mln € si generano all'interno della Sardegna</strong> (84,1%) e solo 0,67 mln € si disperdono fuori regione (15,9%). Sul versante intra-regionale, il baricentro è la <strong>Provincia Gallura Nord-Est</strong> (1,95 mln €, 54,8% del PIL sardo), che assorbe l'intero impatto diretto e una parte rilevante di quello indiretto e indotto; segue la <strong>Città metropolitana di Sassari</strong> (0,97 mln €, 27,3% del PIL sardo), che intercetta attraverso lo spillover una quota significativa di filiere indirette e indotte appoggiate al suo sistema produttivo. I settori che alimentano l'attivazione intra-regionale coincidono con i comparti i cui beni e servizi sono <em>non ricollocabili</em>, cioè devono essere erogati o realizzati dove la spesa viene effettuata: <strong>costruzioni</strong> (lavori di valorizzazione del patrimonio culturale e ambientale, eseguiti necessariamente in loco), <strong>alloggio e ristorazione</strong> (ricettività turistica legata fisicamente al territorio), <strong>attività culturali</strong> e <strong>turismo</strong> (servizi di fruizione ed erogazione legati ai beni culturali oggetto della valorizzazione). Sul fronte opposto, <strong>50,9% della dispersione extra-regionale</strong> è concentrato su tre soli comparti: <strong>attività immobiliari</strong> (30,3% della dispersione), <strong>servizi finanziari</strong> (16,1%) ed <strong>energia elettrica</strong> (4,5%). Si tratta di settori la cui presenza tra i primi attivatori è strutturale e coerente con la struttura dell'economia italiana — il comparto immobiliare è il primo per valore aggiunto a livello nazionale, e l'attivazione che riceve attraverso il canale dei consumi indotti tende a defluire in parte fuori regione attraverso la geografia degli operatori del comparto. Si tratta in larga parte di attivazioni indotte, non di spesa diretta.<br><br>Per la programmazione regionale, il dato suggerisce che gli investimenti del PST Monte Acuto-Riviera di Gallura sulla valorizzazione culturale e ambientale presentano una <strong>elevata ritenzione territoriale per costruzione</strong>: la composizione della spesa è già fortemente orientata su settori non delocalizzabili, e il margine di miglioramento della ritenzione passa per il rafforzamento dei servizi avanzati locali (finanziari, immobiliari, legali, di supporto alle imprese) che oggi vengono in parte importati lungo le filiere indirette e indotte.</div>
+    <div class="hlb__tx"><strong>La struttura settoriale degli impatti riflette la natura locale dell'intervento.</strong> Dei 4,24 mln € di PIL complessivamente attivati, <strong>3,56 mln € si generano all'interno della Sardegna</strong> (84,1%) e solo 0,67 mln € si disperdono fuori regione (15,9%). Sul versante intra-regionale, il baricentro è la <strong>Provincia Gallura Nord-Est</strong> (1,95 mln €, 54,8% del PIL sardo), che assorbe l'intero impatto diretto e una parte rilevante di quello indiretto e indotto; segue la <strong>Città metropolitana di Sassari</strong> (0,97 mln €, 27,3% del PIL sardo), che intercetta attraverso lo spillover una quota significativa di filiere indirette e indotte appoggiate al suo sistema produttivo. I settori che alimentano l'attivazione intra-regionale coincidono con i comparti i cui beni e servizi sono <em>non ricollocabili</em>, cioè devono essere erogati o realizzati dove la spesa viene effettuata: <strong>costruzioni</strong> (lavori di valorizzazione del patrimonio culturale e ambientale, eseguiti necessariamente in loco), <strong>alloggio e ristorazione</strong> (ricettività turistica legata fisicamente al territorio), <strong>attività culturali</strong> e <strong>turismo</strong> (servizi di fruizione ed erogazione legati ai beni culturali oggetto della valorizzazione). Sul fronte opposto, il <strong>50,9% della dispersione extra-regionale</strong> è concentrato su tre soli comparti: <strong>attività immobiliari</strong> (30,3% della dispersione), <strong>servizi finanziari</strong> (16,1%) ed <strong>energia elettrica</strong> (4,5%). Si tratta di settori la cui presenza tra i primi attivatori è strutturale e coerente con la struttura dell'economia italiana — il comparto immobiliare è il primo per valore aggiunto a livello nazionale, e l'attivazione che riceve attraverso il canale dei consumi indotti tende a defluire in parte fuori regione attraverso la geografia degli operatori del comparto. Si tratta in larga parte di attivazioni indotte, non di spesa diretta.<br><br>Per la programmazione regionale, il dato suggerisce che gli investimenti del PST Monte Acuto-Riviera di Gallura sulla valorizzazione culturale e ambientale presentano una <strong>elevata ritenzione territoriale per costruzione</strong>: la composizione della spesa è già fortemente orientata su settori non delocalizzabili, e il margine di miglioramento della ritenzione passa per il rafforzamento dei servizi avanzati locali (finanziari, immobiliari, legali, di supporto alle imprese) che oggi vengono in parte importati lungo le filiere indirette e indotte.</div>
   </div>
 
   <p style="font-size:15px;color:var(--grey-text);max-width:none;width:100%;line-height:1.8;margin-top:48px;margin-bottom:24px;">I due grafici che seguono mostrano, in formato <strong>scatter plot</strong>, come si distribuisce il valore attivato dalla spesa dell'Azione 17.01 sui principali settori ATECO e sulle province di destinazione: ogni punto rappresenta una coppia provincia-settore, con la dimensione proporzionale al valore selezionato. Il primo grafico riporta i valori assoluti, il secondo normalizza per popolazione provinciale. La lettura combinata permette di identificare le coppie provincia-settore che concentrano l'impatto e quelle che assumono maggior rilievo in termini di intensità relativa per abitante.</p>
@@ -1142,22 +1098,38 @@ p{line-height:1.7;}
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer__top">
-    <div class="footer__left">
-      <div class="footer__brand-line">
-        <a href="https://www.openeconomics.eu" class="footer__logo-link" aria-label="OpenEconomics" target="_blank" rel="noopener noreferrer">
-          <img src="icons/OpenEconomics-LOGO-WHITE.png" alt="OpenEconomics" class="footer__logo-img">
-        </a>
-      </div>
-      <p class="footer__tagline">Soluzioni integrate per l'analisi d'impatto socioeconomico e la gestione di finanziamenti pubblici, sostenendo imprese e PA nella mitigazione dei rischi finanziari, sociali e climatici.</p>
+    <div class="footer__brand-block">
+      <a href="https://www.openeconomics.eu/" class="footer__logo-link" aria-label="OpenEconomics Studies">
+        <img src="./icons/OpenEconomics-LOGO-WHITE.png" alt="OpenEconomics" class="footer__logo-img">
+      </a>
+      <p class="footer__tagline">Trasformiamo i dati in evidenza,<br>per decisioni a maggiore impatto.</p>
     </div>
-    <div class="footer__right">
-      <div class="footer__condizioni-label">Condizioni d'uso</div>
-      <p class="footer__condizioni-text">Il presente sito web e tutte le informazioni in esso contenute possono essere divulgati, a condizione che la distribuzione avvenga citando OpenEconomics come fonte. Le informazioni sono fornite a scopo puramente informativo e non implicano alcuna garanzia o impegno da parte di OpenEconomics. Le analisi economiche contenute nel sito web sono state elaborate sulla base di fonti pubbliche autorevoli e fornitori di dati specialistici, con l'obiettivo di offrire una valutazione professionale, oggettiva e prudenziale in linea con le prassi metodologiche di comparto. Al sito web e ai suoi contenuti si applicano il copyright e le norme in materia di protezione dei dati personali.</p>
+    <div class="footer__office-grid">
+      <div class="footer__office">
+        <span class="footer__office-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <address>Via J. F. Kennedy, 57/59<br>87036 Rende (CS)<br>+39 0984302539</address>
+      </div>
+      <div class="footer__office">
+        <span class="footer__office-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <address>Via Vitorchiano, 123<br>00189 Roma (RM)<br>+39 068414537</address>
+      </div>
+      <div class="footer__office">
+        <span class="footer__office-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <address>Via Nino Bixio, 7<br>20129 Milano (MI)</address>
+      </div>
+      <div class="footer__office">
+        <span class="footer__office-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <address>SEDE t33<br>Via Calatafimi, 1<br>60121 Ancona (AN)<br>+39 0719715460</address>
+      </div>
     </div>
   </div>
+  <div class="footer__rule"></div>
   <div class="footer__bottom">
-    <a href="https://www.openeconomics.eu" target="_blank" rel="noopener" class="footer__bottom-left">www.openeconomics.eu ↗</a>
-    <div class="footer__bottom-right">Copyright &copy; OpenEconomics SRL 2026</div>
+    <div class="footer__bottom-left">
+      <a class="footer__site-link" href="https://www.openeconomics.eu" target="_blank" rel="noopener">www.openeconomics.eu <span aria-hidden="true">↗</span></a>
+      <span class="footer__copy">© 2026 OpenEconomics S.p.A.</span>
+    </div>
+    <span class="footer__disclaimer">Il presente sito web e tutte le informazioni in esso contenute possono essere divulgati, a condizione che la distribuzione avvenga citando OpenEconomics come fonte. Le informazioni sono fornite a scopo puramente informativo e non implicano alcuna garanzia o impegno da parte di OpenEconomics. Le analisi economiche contenute nel sito web sono state elaborate sulla base di fonti pubbliche autorevoli e fornitori di dati specialistici, con l'obiettivo di offrire una valutazione professionale, oggettiva e prudenziale in linea con le prassi metodologiche di comparto. Al sito web e ai suoi contenuti si applicano il copyright e le norme in materia di protezione dei dati personali.</span>
   </div>
 </footer>
 
@@ -1274,7 +1246,8 @@ document.addEventListener('DOMContentLoaded', function(){
   var COL_BLU700 = '#4400B3';
   var COL_BLU900 = '#270065';
   var COL_GREY = '#E8E8E4';
-  var FONT = "'Atkinson Hyperlegible Next',Arial,sans-serif";
+  var rootStyle = getComputedStyle(document.documentElement);
+var FONT = rootStyle.getPropertyValue('--oe-font-sans').trim() || 'sans-serif';
 
   function initSroiCharts(){
     var pieEl = document.getElementById('sroi-pie');
@@ -1344,6 +1317,26 @@ document.addEventListener('DOMContentLoaded', function(){
   } else {
     initSroiCharts();
   }
+})();
+</script>
+<script>
+/* Scroll-spy nav: evidenzia la sezione corrente (testo viola + sottolineatura lime) */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.nav__links a, .masthead__link'));
+  if(!links.length)return;
+  var items=[];
+  links.forEach(function(a){
+    var id=a.hash?a.hash.slice(1):(a.getAttribute('data-nav')||(function(){var oc=a.getAttribute('onclick')||'';var m=oc.match(/(?:navTo|showView)\(['"]([^'"]+)['"]/);return m?m[1]:'';})());
+    var sec=id&&document.getElementById(id);
+    if(sec)items.push({a:a,sec:sec});
+  });
+  if(!items.length)return;
+  var cls=items[0].a.classList.contains('masthead__link')?'is-active':'nav-active';
+  var map={};items.forEach(function(it){map[it.sec.id]=it.a;});
+  function setActive(a){links.forEach(function(l){l.classList.remove('nav-active','is-active');});if(a)a.classList.add(cls);}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(map[e.target.id]);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  items.forEach(function(it){io.observe(it.sec);});
+  links.forEach(function(a){a.addEventListener('click',function(){setActive(a);});});
 })();
 </script>
 </body>

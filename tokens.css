@@ -1,0 +1,54 @@
+/* ============================================================
+   OpenEconomics — BRIDGE verso il Design System ufficiale
+   ------------------------------------------------------------
+   La fonte di verità del brand è ora ds/oe-tokens.css (refresh
+   2025: palette --oe-*, font self-hosted Atkinson Next/Mono +
+   Hedvig). Questo file fa da PONTE: importa i token ufficiali e
+   rimappa i nomi storici usati dal sito (--blu-*, --bluette*,
+   --lime, --fd/--fb/--fm) sui token --oe-*, così il CSS esistente
+   continua a funzionare durante la migrazione graduale.
+
+   Per la revisione brand: modificare ds/oe-tokens.css.
+   ============================================================ */
+
+@import url("ds/oe-tokens.css");
+
+:root {
+  /* ---- Brand → DS (valori identici: zero cambiamento visivo, fonte unica) ---- */
+  --white:      var(--oe-white);
+  --black:      var(--oe-black);
+
+  --blu-900:    var(--oe-bluette-900);
+  --blu-800:    var(--oe-bluette-800);
+  --blu-700:    var(--oe-bluette-700);
+  --blu-500:    var(--oe-bluette-500);
+  --blu-400:    var(--oe-bluette-400);
+
+  --bluette:    var(--oe-bluette-700);
+  --bluette800: var(--oe-bluette-800);
+  --bluette900: var(--oe-bluette-900);
+
+  --lime:       var(--oe-lime-400);
+
+  /* ---- Font → DS (self-hosted). Atkinson Next/Hedvig invariati;
+          il mono passa da JetBrains ad Atkinson Hyperlegible Mono. ---- */
+  --fd: var(--oe-font-serif);
+  --fb: var(--oe-font-sans);
+  --fm: var(--oe-font-mono);
+
+  /* ---- Neutri storici: lasciati invariati per non alterare il CORPO
+          delle pagine (la migrazione del corpo è una fase successiva). ---- */
+  --ink:        #0b0a0f;
+  --hair:       rgba(11, 10, 15, 0.12);
+  --grey-50:    #fafaf8;
+  --grey-100:   #f1f0ec;
+  --grey-300:   #cfcdc4;
+  --grey-500:   #8a887f;
+  --grey-700:   #4a4844;
+  --grey-light: #f5f5f3;
+  --grey-mid:   #ddddda;
+  --grey-text:  #555555;
+
+  /* ---- Layout ---- */
+  --gutter: 40px;
+}
